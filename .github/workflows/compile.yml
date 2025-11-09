@@ -22,13 +22,23 @@ jobs:
         arduino-cli core update-index
         arduino-cli core install esp32:esp32
 
-    - name: Install libraries
+    - name: Install libraries from file (or fallback)
       run: |
-        arduino-cli lib install "Adafruit Unified Sensor"
-        arduino-cli lib install "ArduinoJson"
-        arduino-cli lib install "DHT sensor library"
-        arduino-cli lib install "U8g2"
-
+        if [ -f arduino-libraries.txt ]; then
+          echo "Found arduino-libraries.txt, installing listed libraries..."
+          grep -v '^#' arduino-libraries.txt | while read lib; do
+            if [ -n "$lib" ]; then
+              arduino-cli lib install "$lib"
+            fi
+          done
+        else
+          echo "arduino-libraries.txt not found. Installing common libraries as fallback..."
+          arduino-cli lib install "Adafruit Unified Sensor"
+          arduino-cli lib install "ArduinoJson"
+          arduino-cli lib install "DHT sensor library"
+          arduino-cli lib install "U8g2"
+        fi
+        
     - name: Compile project
       run: |
         arduino-cli compile -v --fqbn esp32:esp32:esp32 ./ --build-property compiler.cpp.extra_flags="-Os -Werror=return-type -DF_CPU=240000000L"

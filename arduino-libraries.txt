@@ -1,0 +1,8 @@
+Adafruit
+Adafruit
+ArduinoJson
+DHT
+ESP32Servo
+RTClib
+U8g2
+
