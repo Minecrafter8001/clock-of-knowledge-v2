@@ -1,36 +1,84 @@
 {
   "configurations": [
     {
-      "name": "ESP32",
+      "name": "Arduino",
       "includePath": [
-        "${workspaceFolder}/**",
-        "${env:USERPROFILE}/Documents/Arduino/libraries/**",
-
-        // ESP32 core + variants
-        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/hardware/esp32/3.3.2/cores/esp32",
-        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/hardware/esp32/3.3.2/variants/esp32",
-
-        // ESP32 built-in libraries
-        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/hardware/esp32/3.3.2/libraries/**",
-        
-        // ESP-IDF (ESP32 framework includes - FreeRTOS, soc, esp_netif, etc.)
-        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.5-07e9bf49-v1/esp32/include/**",
-        
-        // ESP32 SDK config (sdkconfig.h for flash mode)
-        "${env:LOCALAPPDATA}/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.5-07e9bf49-v1/esp32/dio_qspi/include"
+        "C:\\Users\\ash\\Documents\\Arduino\\libraries/**",
+        "C:\\Users\\ash\\Documents\\Arduino\\clock-of-knowledge-v2/**",
+        "C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32-arduino-libs_idf-release_v5.5-07e9bf49-v1_bf8aca89ee\\esp32\\include/**"
+      ],
+      "forcedInclude": [],
+      "compilerPath": "C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp-x32_2507_0c68e32d0d5340f1/bin/xtensa-esp32-elf-g++",
+      "compilerArgs": [
+        "C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp-x32_2507_0c68e32d0d5340f1/bin/xtensa-esp32-elf-g++",
+        "-MMD",
+        "-c",
+        "@C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32-arduino-libs_idf-release_v5.5-07e9bf49-v1_bf8aca89ee\\esp32/flags/cpp_flags",
+        "-w",
+        "-Os",
+        "-Werror=return-type",
+        "-DF_CPU=240000000L",
+        "-DARDUINO=10607",
+        "-DARDUINO_ESP32_DEV",
+        "-DARDUINO_ARCH_ESP32",
+        "-DARDUINO_BOARD=\"ESP32_DEV\"",
+        "-DARDUINO_VARIANT=\"esp32\"",
+        "-DARDUINO_PARTITION_default",
+        "-DARDUINO_HOST_OS=\"windows\"",
+        "-DARDUINO_FQBN=\"esp32:esp32:esp32:UploadSpeed=921600,CPUFreq=240,FlashFreq=80,FlashMode=dio,FlashSize=4M,PartitionScheme=default,DebugLevel=none,PSRAM=disabled,LoopCore=1,EventsCore=1,EraseFlash=none,JTAGAdapter=default,ZigbeeMode=default\"",
+        "-DESP32=ESP32",
+        "-DCORE_DEBUG_LEVEL=0",
+        "-DARDUINO_RUNNING_CORE=1",
+        "-DARDUINO_EVENT_RUNNING_CORE=1",
+        "-DARDUINO_USB_CDC_ON_BOOT=0",
+        "@C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32-arduino-libs_idf-release_v5.5-07e9bf49-v1_bf8aca89ee\\esp32/flags/defines",
+        "-IC:\\Users\\ash\\Documents\\Arduino\\clock-of-knowledge-v2",
+        "-iprefix",
+        "C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32-arduino-libs_idf-release_v5.5-07e9bf49-v1_bf8aca89ee\\esp32/include/",
+        "@C:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32-arduino-libs_idf-release_v5.5-07e9bf49-v1_bf8aca89ee\\esp32/flags/includes",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32-arduino-libs_idf-release_v5.5-07e9bf49-v1_bf8aca89ee\\esp32/dio_qspi/include",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\cores\\esp32",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\variants\\esp32",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\Adafruit_Unified_Sensor_1.1.15_c4f0a59ad82fa17d\\Adafruit Unified Sensor",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\ArduinoJson_7.4.2_b2ca4093156386e8\\ArduinoJson\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\DHT_sensor_library_1.4.6_c312b1aec24f4efc\\DHT sensor library",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\U8g2_2.35.30_6488a19c4828990b\\U8g2\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\libraries\\WiFi\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\libraries\\Network\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\libraries\\HTTPClient\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\libraries\\NetworkClientSecure\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\libraries\\SPI\\src",
+        "-IC:\\Users\\ash\\AppData\\Local\\Arduino15\\internal\\esp32_esp32_3.3.2_8b0cb2c6aa6d01ad\\libraries\\Wire\\src",
+        "@c:\\Users\\ash\\Documents\\Arduino\\build\\build_clock-of-knowledge-v2/build_opt.h",
+        "@c:\\Users\\ash\\Documents\\Arduino\\build\\build_clock-of-knowledge-v2/file_opts",
+        "c:\\Users\\ash\\Documents\\Arduino\\build\\build_clock-of-knowledge-v2\\sketch\\clock-of-knowledge-v2.ino.cpp",
+        "-o",
+        "c:\\Users\\ash\\Documents\\Arduino\\build\\build_clock-of-knowledge-v2\\sketch\\clock-of-knowledge-v2.ino.cpp.o"
       ],
       "defines": [
-        "ARDUINO=10819",
+        "F_CPU=240000000L",
+        "ARDUINO=10607",
+        "ARDUINO_ESP32_DEV",
         "ARDUINO_ARCH_ESP32",
-        "ESP32",
-        "ESP_PLATFORM",
+        "ARDUINO_BOARD=\"ESP32_DEV\"",
         "ARDUINO_VARIANT=\"esp32\"",
-        "ARDUINO_BOARD=\"ESP32_DEV\""
+        "ARDUINO_PARTITION_default",
+        "ARDUINO_HOST_OS=\"windows\"",
+        "ARDUINO_FQBN=\"esp32:esp32:esp32:UploadSpeed=921600,CPUFreq=240,FlashFreq=80,FlashMode=dio,FlashSize=4M,PartitionScheme=default,DebugLevel=none,PSRAM=disabled,LoopCore=1,EventsCore=1,EraseFlash=none,JTAGAdapter=default,ZigbeeMode=default\"",
+        "ESP32=ESP32",
+        "CORE_DEBUG_LEVEL=0",
+        "ARDUINO_RUNNING_CORE=1",
+        "ARDUINO_EVENT_RUNNING_CORE=1",
+        "ARDUINO_USB_CDC_ON_BOOT=0",
+        "ARDUINO_BOARD=\\\"ESP32_DEV\\\"\"",
+        "ARDUINO_VARIANT=\\\"esp32\\\"\"",
+        "ARDUINO_HOST_OS=\\\"windows\\\"\"",
+        "ARDUINO_FQBN=\\\"esp32:esp32:esp32:UploadSpeed=921600,CPUFreq=240,FlashFreq=80,FlashMode=dio,FlashSize=4M,PartitionScheme=default,DebugLevel=none,PSRAM=disabled,LoopCore=1,EventsCore=1,EraseFlash=none,JTAGAdapter=default,ZigbeeMode=default\\\"\"",
+        "ARDUINO_CORE_BUILD",
+        "USBCON"
       ],
-      "compilerPath": "${env:LOCALAPPDATA}/Arduino15/packages/esp32/tools/esp-x32/2507/bin/xtensa-esp32-elf-gcc.exe",
-      "cStandard": "c11",
-      "cppStandard": "c++17",
-      "intelliSenseMode": "gcc-x64"
+      "cStandard": "c17",
+      "cppStandard": "c++17"
     }
   ],
   "version": 4

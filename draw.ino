@@ -1,4 +1,5 @@
 #include <U8g2lib.h>
+#include <WiFi.h>
 #include "time.h"
 #include "DHT.h"
 
@@ -16,11 +17,17 @@ extern const unsigned char image_temperature_bits[];
 const char* dow3(uint8_t wday);
 void formatEnv(char* tempBuf, size_t tempLen, char* humBuf, size_t humLen, float t, float h);
 
+// Helper for 12-hour format
+uint8_t to12Hour(uint8_t hour24) {
+  uint8_t h = hour24 % 12;
+  return (h == 0) ? 12 : h;
+}
+
 // ------------------------ Drawing ------------------------
 void drawUI(const struct tm& tmNow) {
   char timeHHMMSS[9];
   snprintf(timeHHMMSS, sizeof(timeHHMMSS), "%02d:%02d:%02d",
-           (tmNow.tm_hour % 12 == 0) ? 12 : tmNow.tm_hour % 12,
+           to12Hour(tmNow.tm_hour),
            tmNow.tm_min, tmNow.tm_sec);
 
   const char* ampm = (tmNow.tm_hour < 12) ? "AM" : "PM";

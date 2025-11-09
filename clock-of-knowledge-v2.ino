@@ -85,6 +85,25 @@ unsigned long bootMillis = 0;
 void drawUI(const struct tm& tmNow);
 
 // ------------------------ Helpers ------------------------
+const char* dow3(uint8_t wday) {
+  static const char* days[] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+  return (wday < 7) ? days[wday] : "---";
+}
+
+void formatEnv(char* tempBuf, size_t tempLen, char* humBuf, size_t humLen, float t, float h) {
+  if (!isnan(t)) {
+    snprintf(tempBuf, tempLen, "%.1f°C", t);
+  } else {
+    snprintf(tempBuf, tempLen, "--.-°C");
+  }
+  
+  if (!isnan(h)) {
+    snprintf(humBuf, humLen, "%.0f%%", h);
+  } else {
+    snprintf(humBuf, humLen, "--%%" );
+  }
+}
+
 bool syncTime() {
   configTzTime(tzUK, ntpServer); // automatic DST
   struct tm timeinfo;
@@ -141,7 +160,7 @@ void fetchOpenMeteo() {
   }
 
   String body = http.getString();
-  StaticJsonDocument<1536> doc;
+  StaticJsonDocument<384> doc;
   DeserializationError err = deserializeJson(doc, body);
 
   if (err) {
@@ -166,6 +185,11 @@ void fetchOpenMeteo() {
 // ------------------------ Setup ------------------------
 void setup() {
   Serial.begin(115200);
+
+  // Validate configuration
+  if (String(ssid) == "" || String(password) == "") {
+    Serial.println("ERROR: WiFi credentials not configured in config.h!");
+  }
 
   pinMode(FILAMENT_EN_PIN, OUTPUT);
   pinMode(VFD_RESET_PIN, OUTPUT);
