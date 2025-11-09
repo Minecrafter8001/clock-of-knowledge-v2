@@ -1,8 +1,8 @@
-Adafruit
-Adafruit
-ArduinoJson
-DHT
-ESP32Servo
-RTClib
-U8g2
+Adafruit BusIO         
+Adafruit Unified Sensor
+ArduinoJson            
+DHT sensor library     
+ESP32Servo             
+RTClib                 
+U8g2                   
 
