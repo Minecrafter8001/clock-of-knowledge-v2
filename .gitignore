@@ -1,3 +1,5 @@
 libraries
 .config.h
 .github
+.vscode
+build
