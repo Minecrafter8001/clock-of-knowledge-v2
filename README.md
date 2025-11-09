@@ -23,7 +23,7 @@ It keeps accurate time using NTP, shows Wi-Fi connection status, and displays bo
 - UI design: [lopaka](https://lopaka.app/gallery/16709/35604)
 
 ## Issues and bugs
-1. if the wifi association fails it waits forever and needs a manual restart
+1. currently no RTC, so it needs a wifi connection to sync and its not very accurate
 
 
 ## images
