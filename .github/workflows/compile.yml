@@ -31,4 +31,4 @@ jobs:
 
     - name: Compile project
       run: |
-        arduino-cli compile --fqbn esp32:esp32:esp32 ./ --build-property compiler.cpp.extra_flags="-Os -Werror=return-type -DF_CPU=240000000L"
+        arduino-cli compile -v --fqbn esp32:esp32:esp32 ./ --build-property compiler.cpp.extra_flags="-Os -Werror=return-type -DF_CPU=240000000L"
