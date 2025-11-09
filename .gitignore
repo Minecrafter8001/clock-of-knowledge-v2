@@ -1,5 +1,5 @@
 libraries
 .config.h
-.github
+copilot-instructions.md
 .vscode
 build

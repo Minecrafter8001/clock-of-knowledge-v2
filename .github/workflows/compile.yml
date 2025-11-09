@@ -24,15 +24,15 @@ jobs:
 
     - name: Install libraries from file (or fallback)
       run: |
-        if [ -f arduino-libraries.txt ]; then
-          echo "Found arduino-libraries.txt, installing listed libraries..."
-          grep -v '^#' arduino-libraries.txt | while read lib; do
+        if [ -f .github/arduino-libraries.txt ]; then
+          echo "Found .github/arduino-libraries.txt, installing listed libraries..."
+          grep -v '^#' .github/arduino-libraries.txt | while read lib; do
             if [ -n "$lib" ]; then
               arduino-cli lib install "$lib"
             fi
           done
         else
-          echo "arduino-libraries.txt not found. Installing common libraries as fallback..."
+          echo ".github/arduino-libraries.txt not found. Installing common libraries as fallback..."
           arduino-cli lib install "Adafruit Unified Sensor"
           arduino-cli lib install "ArduinoJson"
           arduino-cli lib install "DHT sensor library"
