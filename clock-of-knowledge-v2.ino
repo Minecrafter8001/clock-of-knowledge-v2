@@ -66,6 +66,7 @@ const unsigned char image_wifi_disconnected_bits[] = {
 unsigned long lastDHT = 0;
 float cachedTemp = NAN, cachedHum = NAN;
 
+
 static int lastSecond = -1;
 unsigned long lastResync = 0;
 
@@ -76,6 +77,7 @@ float extHum  = NAN;
 
 // Wi-Fi retry ticker
 unsigned long lastWifiRetry = 0;
+unsigned int wifiRetryCount = 0;
 
 // Time management
 bool timeSynced = false;
@@ -98,7 +100,7 @@ void formatEnv(char* tempBuf, size_t tempLen, char* humBuf, size_t humLen, float
   }
   
   if (!isnan(h)) {
-    snprintf(humBuf, humLen, "%.0f%%", h);
+    snprintf(humBuf, humLen, "%.1f%%", h);
   } else {
     snprintf(humBuf, humLen, "--%%" );
   }
@@ -219,12 +221,18 @@ void loop() {
   // Wi-Fi connection handling (non-blocking)
   if (WiFi.status() != WL_CONNECTED) {
     if (millis() - lastWifiRetry > WIFI_RETRY_MS) {
-      Serial.println("Attempting Wi-Fi connection...");
+      wifiRetryCount++;
+      Serial.printf("Attempting Wi-Fi connection [%d]...\n", wifiRetryCount);
       WiFi.disconnect(true);
       WiFi.begin(ssid, password);
       lastWifiRetry = millis();
+      
     }
   } else {
+    if (wifiRetryCount > 0) {
+      Serial.printf("Wi-Fi connected after [%d] attempts\n", wifiRetryCount);
+    }
+    wifiRetryCount = 0;
     // Connected
     if (!timeSynced) {
       if (syncTime()) {
