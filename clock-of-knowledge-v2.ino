@@ -102,7 +102,7 @@ void formatEnv(char* tempBuf, size_t tempLen, char* humBuf, size_t humLen, float
   if (!isnan(h)) {
     snprintf(humBuf, humLen, "%.1f%%", h);
   } else {
-    snprintf(humBuf, humLen, "--%%" );
+    snprintf(humBuf, humLen, "--.-%%" );
   }
 }
 
